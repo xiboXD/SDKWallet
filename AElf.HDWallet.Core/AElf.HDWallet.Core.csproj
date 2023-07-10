@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AElf.Cryptography" Version="1.0.0" />
+        <PackageReference Include="NBitcoin" Version="6.0.18" />
+        <PackageReference Include="Volo.Abp.Autofac" Version="5.2.0" />
+        <PackageReference Include="Volo.Abp.Core" Version="5.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\wallet.csproj" />
+    </ItemGroup>
+
+</Project>
