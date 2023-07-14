@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Text;
 
-namespace AElf.HDWallet.Core
+namespace SDK.HDWallet.Core
 {
     public static class Helper
     {

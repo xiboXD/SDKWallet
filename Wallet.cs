@@ -1,17 +1,15 @@
 #pragma warning disable CS0618 // Type or member is obsolete
 using System;
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.IO;
 using Wallet.Types;
 using Wallet.Extensions;
 using System.Text.RegularExpressions;
-using AElf.HDWallet;
-using AElf.HDWallet.Core;
+using SDK.HDWallet;
+using SDK.HDWallet.Core;
 using AElf.Cryptography;
 using AElf;
 
@@ -164,7 +162,7 @@ namespace Wallet
     {   
         var mnemonic = GenerateMnemonic(strength, language);
         var seedHex = ConvertMnemonicToSeedHex(mnemonic, password);
-        var masterWallet = new HDWallet<AElfWallet>(seedHex, "m/44'/1616'");
+        var masterWallet = new HDWallet<SDKWallet>(seedHex, "m/44'/1616'");
         var account = masterWallet.GetAccount(0);
         var wallet = account.GetExternalWallet(0);
         var keyPair = CryptoHelper.FromPrivateKey(wallet.PrivateKey);
@@ -188,7 +186,7 @@ namespace Wallet
                 Language = Language.English
             };
         var seedHex = ConvertMnemonicToSeedHex(mnemonicValue, password);
-        var masterWallet = new HDWallet<AElfWallet>(seedHex, "m/44'/1616'");
+        var masterWallet = new HDWallet<SDKWallet>(seedHex, "m/44'/1616'");
         var account = masterWallet.GetAccount(0);
         var wallet = account.GetExternalWallet(0);
         var keyPair = CryptoHelper.FromPrivateKey(wallet.PrivateKey);

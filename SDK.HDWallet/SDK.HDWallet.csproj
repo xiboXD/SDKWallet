@@ -7,7 +7,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\wallet.csproj" />
-      <ProjectReference Include="..\AElf.HDWallet.Core\AElf.HDWallet.Core.csproj" />
+      <ProjectReference Include="..\SDK.HDWallet.Core\SDK.HDWallet.Core.csproj" />
     </ItemGroup>
 
 </Project>

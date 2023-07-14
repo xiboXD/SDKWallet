@@ -1,9 +1,9 @@
-using AElf.HDWallet.Core;
+using SDK.HDWallet.Core;
 using AElf.Types;
 
-namespace AElf.HDWallet
+namespace SDK.HDWallet
 {
-    public class AElfWallet : Wallets
+    public class SDKWallet : Wallets
     {
         protected override Address GenerateAddress()
         {

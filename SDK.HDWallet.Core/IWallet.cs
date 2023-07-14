@@ -1,6 +1,6 @@
 using AElf.Types;
 
-namespace AElf.HDWallet.Core
+namespace SDK.HDWallet.Core
 {
     public interface IWallet
     {

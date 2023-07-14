@@ -4,7 +4,7 @@ using AElf.Types;
 using NBitcoin;
 using NBitcoin.DataEncoders;
 
-namespace AElf.HDWallet.Core
+namespace SDK.HDWallet.Core
 {
     public abstract class Wallets : IWallet
     {

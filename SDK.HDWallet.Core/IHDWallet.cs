@@ -1,4 +1,4 @@
-namespace AElf.HDWallet.Core
+namespace SDK.HDWallet.Core
 {
     public interface IHDWallet<out TWallet> where TWallet : IWallet, new()
     {

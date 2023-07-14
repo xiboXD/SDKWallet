@@ -1,6 +1,6 @@
-namespace AElf.HDWallet
+namespace SDK.HDWallet
 {
-    public class AElfHDWalletConstants
+    public class SDKHDWalletConstants
     {
         public const uint HardenedOffset = 0x80000000;
         /// <summary>
@@ -9,6 +9,6 @@ namespace AElf.HDWallet
         /// coin_type: AELF is 1616 (https://github.com/satoshilabs/slips/blob/master/slip-0044.md)
         /// 
         /// </summary>
-        public const string AElfPath = "'m/44\'/1616\'/0\'/0/0'";
+        public const string SDKPath = "'m/44\'/1616\'/0\'/0/0'";
     }
 }

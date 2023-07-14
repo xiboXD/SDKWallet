@@ -1,6 +1,6 @@
 using NBitcoin;
 
-namespace AElf.HDWallet.Core
+namespace SDK.HDWallet.Core
 {
     public class HDWallet<TWallet> : IHDWallet<TWallet> where TWallet : IWallet, new()
     {
