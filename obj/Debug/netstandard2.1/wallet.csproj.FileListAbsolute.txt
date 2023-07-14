@@ -1,5 +1,0 @@
-/Users/xibo/practice/aelf-wallet/obj/Debug/netstandard2.1/wallet.csproj.AssemblyReference.cache
-/Users/xibo/practice/aelf-wallet/obj/Debug/netstandard2.1/wallet.GeneratedMSBuildEditorConfig.editorconfig
-/Users/xibo/practice/aelf-wallet/obj/Debug/netstandard2.1/wallet.AssemblyInfoInputs.cache
-/Users/xibo/practice/aelf-wallet/obj/Debug/netstandard2.1/wallet.AssemblyInfo.cs
-/Users/xibo/practice/aelf-wallet/obj/Debug/netstandard2.1/wallet.csproj.CoreCompileInputs.cache

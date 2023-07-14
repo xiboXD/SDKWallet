@@ -7,7 +7,7 @@ namespace AElf.HDWallet
     {
         protected override Address GenerateAddress()
         {
-            return Address.FromPublicKey(KeyPair.PublicKey);
+            return Address.FromPublicKey(Key.PubKey.ToBytes());
         }
     }
 }

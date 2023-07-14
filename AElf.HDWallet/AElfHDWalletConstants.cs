@@ -9,6 +9,6 @@ namespace AElf.HDWallet
         /// coin_type: AELF is 1616 (https://github.com/satoshilabs/slips/blob/master/slip-0044.md)
         /// 
         /// </summary>
-        public const string AElfPath = @"m/44'/1616'";
+        public const string AElfPath = "'m/44\'/1616\'/0\'/0/0'";
     }
 }

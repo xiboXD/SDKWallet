@@ -2,14 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
+        <RestoreSources>http://192.168.66.111:8081/repository/nuget-group/index.json</RestoreSources>
     </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="AElf.Cryptography" Version="1.0.0" />
-        <PackageReference Include="NBitcoin" Version="6.0.18" />
-        <PackageReference Include="Volo.Abp.Autofac" Version="5.2.0" />
-        <PackageReference Include="Volo.Abp.Core" Version="5.2.0" />
-    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\wallet.csproj" />

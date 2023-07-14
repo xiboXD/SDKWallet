@@ -1,5 +1,0 @@
-/Users/xibo/practice/aelf-wallet/AElf.HDWallet/obj/Debug/net7.0/AElf.HDWallet.csproj.AssemblyReference.cache
-/Users/xibo/practice/aelf-wallet/AElf.HDWallet/obj/Debug/net7.0/AElf.HDWallet.GeneratedMSBuildEditorConfig.editorconfig
-/Users/xibo/practice/aelf-wallet/AElf.HDWallet/obj/Debug/net7.0/AElf.HDWallet.AssemblyInfoInputs.cache
-/Users/xibo/practice/aelf-wallet/AElf.HDWallet/obj/Debug/net7.0/AElf.HDWallet.AssemblyInfo.cs
-/Users/xibo/practice/aelf-wallet/AElf.HDWallet/obj/Debug/net7.0/AElf.HDWallet.csproj.CoreCompileInputs.cache

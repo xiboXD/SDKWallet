@@ -11,7 +11,9 @@ using Wallet.Types;
 using Wallet.Extensions;
 using System.Text.RegularExpressions;
 using AElf.HDWallet;
+using AElf.HDWallet.Core;
 using AElf.Cryptography;
+using AElf;
 
 
 
@@ -130,11 +132,7 @@ namespace Wallet
     public string ConvertMnemonicToSeedHex(Mnemonic mnemonic, string password)
     {
         var mnemonicBytes = Encoding.UTF8.GetBytes(mnemonic.Value.Normalize(NormalizationForm.FormKD));
-        var saltSuffix = string.Empty;
-        if (password != null && password != "")
-        {
-            saltSuffix = password;
-        }
+        var saltSuffix = password.IsNullOrEmpty() ? string.Empty : password;
         var salt = $"mnemonic{saltSuffix}";
         var saltBytes = Encoding.UTF8.GetBytes(salt);
 
@@ -162,42 +160,72 @@ namespace Wallet
         return true;
     }
 
-    public string CreateWallet(int strength, Language language, string password)
+    public Dictionary<string, string> CreateWallet(int strength, Language language, string password)
     {   
         var mnemonic = GenerateMnemonic(strength, language);
-        var accountInfo = new StringBuilder();
         var seedHex = ConvertMnemonicToSeedHex(mnemonic, password);
-        var masterWallet = new AElfHDWallet(seedHex);
+        var masterWallet = new HDWallet<AElfWallet>(seedHex, "m/44'/1616'");
         var account = masterWallet.GetAccount(0);
         var wallet = account.GetExternalWallet(0);
         var keyPair = CryptoHelper.FromPrivateKey(wallet.PrivateKey);
-        accountInfo.AppendLine($"[Mnemonic]{mnemonic}");
-        accountInfo.AppendLine($"[PrivateKey]{keyPair.PrivateKey}");
-        accountInfo.AppendLine($"[PublicKey]{keyPair.PublicKey}");
-        return accountInfo.ToString();
+        var privateKey = keyPair.PrivateKey.ToHex();
+        var publicKey = keyPair.PublicKey.ToHex();
+        var address = wallet.Address.ToBase58();
+        var accountInfo = new Dictionary<string, string>();
+        accountInfo.Add("Mnemonic", mnemonic.ToString());
+        accountInfo.Add("PrivateKey", privateKey);
+        accountInfo.Add("PublicKey", publicKey);
+        accountInfo.Add("Address", address);
+        return accountInfo;
     }
 
-    public string GetWalletByMnemonic(string mnemonic, string password = null)
+    public Dictionary<string, string> GetWalletByMnemonic(string mnemonic, string password = null)
     {
-        var accountInfo = new StringBuilder();
-        var seedHex = ConvertMnemonicToSeedHex(new Mnemonic(mnemonic), password);
-        var masterWallet = new AElfHDWallet(seedHex);
+        var accountInfo = new Dictionary<string, string>();
+        var mnemonicValue = new Mnemonic
+            {
+                Value = mnemonic,
+                Language = Language.English
+            };
+        var seedHex = ConvertMnemonicToSeedHex(mnemonicValue, password);
+        var masterWallet = new HDWallet<AElfWallet>(seedHex, "m/44'/1616'");
         var account = masterWallet.GetAccount(0);
         var wallet = account.GetExternalWallet(0);
         var keyPair = CryptoHelper.FromPrivateKey(wallet.PrivateKey);
-        accountInfo.AppendLine($"[Mnemonic]{mnemonic}");
-        accountInfo.AppendLine($"[PrivateKey]{keyPair.PrivateKey}");
-        accountInfo.AppendLine($"[PublicKey]{keyPair.PublicKey}");
-        return accountInfo.ToString();
+        var privateKey = keyPair.PrivateKey.ToHex();
+        var publicKey = keyPair.PublicKey.ToHex();
+        var address = wallet.Address.ToBase58();
+        accountInfo.Add("Mnemonic", mnemonic);
+        accountInfo.Add("PrivateKey", privateKey);
+        accountInfo.Add("PublicKey", publicKey);
+        accountInfo.Add("Address", address);
+        
+        return accountInfo;
     }
 
-    public string GetWalletByPrivateKey(string privateKey)
+       // Convert hex string to byte array
+    static byte[] StringToByteArray(string hexString)
     {
-        var accountInfo = new StringBuilder();
-        var keyPair = CryptoHelper.FromPrivateKey(Encoding.UTF8.GetBytes(privateKey));
-        accountInfo.AppendLine($"[PrivateKey]{keyPair.PrivateKey}");
-        accountInfo.AppendLine($"[PublicKey]{keyPair.PublicKey}");
-        return accountInfo.ToString();
+        int length = hexString.Length;
+        byte[] byteArray = new byte[length / 2];
+
+        for (int i = 0; i < length; i += 2)
+        {
+            byteArray[i / 2] = Convert.ToByte(hexString.Substring(i, 2), 16);
+        }
+
+        return byteArray;
+    }
+    public Dictionary<string, string> GetWalletByPrivateKey(string privateKey)
+    {
+        var accountInfo = new Dictionary<string, string>();
+        var keybyte = StringToByteArray(privateKey);
+        Array.Resize(ref keybyte, 32);
+        var keyPair = CryptoHelper.FromPrivateKey(keybyte);
+        var publicKey = keyPair.PublicKey.ToHex();
+        accountInfo.Add("PrivateKey", privateKey);
+        accountInfo.Add("PublicKey", publicKey);
+        return accountInfo;
     }
 
 }}
