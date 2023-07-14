@@ -17,15 +17,15 @@
     <PackageReference Include="AElf.Core" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\net7.0\Wordlists\chinese_simplified.txt" />
-    <None Include="bin\Debug\net7.0\Wordlists\chinese_traditional.txt" />
-    <None Include="bin\Debug\net7.0\Wordlists\czech.txt" />
-    <None Include="bin\Debug\net7.0\Wordlists\english.txt" />
-    <None Include="bin\Debug\net7.0\Wordlists\french.txt" />
-    <None Include="bin\Debug\net7.0\Wordlists\italian.txt" />
-    <None Include="bin\Debug\net7.0\Wordlists\japanese.txt" />
-    <None Include="bin\Debug\net7.0\Wordlists\korean.txt" />
-    <None Include="bin\Debug\net7.0\Wordlists\portuguese.txt" />
-    <None Include="bin\Debug\net7.0\Wordlists\spanish.txt" />
+    <None Include="Wordlists\chinese_simplified.txt" />
+    <None Include="Wordlists\chinese_traditional.txt" />
+    <None Include="Wordlists\czech.txt" />
+    <None Include="Wordlists\english.txt" />
+    <None Include="Wordlists\french.txt" />
+    <None Include="Wordlists\italian.txt" />
+    <None Include="Wordlists\japanese.txt" />
+    <None Include="Wordlists\korean.txt" />
+    <None Include="Wordlists\portuguese.txt" />
+    <None Include="Wordlists\spanish.txt" />
   </ItemGroup>
 </Project>

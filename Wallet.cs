@@ -58,7 +58,7 @@ namespace Wallet
 
     private string GetPath(string fileName)
     {
-        return $"Wordlists/{fileName}";
+        return $"../../../Wordlists/{fileName}";
     }
 
     public Mnemonic ConvertEntropyToMnemonic(Entropy entropy)
