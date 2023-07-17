@@ -1,4 +1,4 @@
-namespace Wallet.Extensions
+namespace BIP39Wallet.Extensions
 {
     public static class StringExtensions
     {

@@ -1,4 +1,4 @@
-namespace Wallet
+namespace BIP39Wallet
 {
     public class WalletConstants
     {

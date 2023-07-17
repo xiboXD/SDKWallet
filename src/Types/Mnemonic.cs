@@ -1,4 +1,4 @@
-namespace Wallet.Types
+namespace BIP39Wallet.Types
 {
     public class Mnemonic
     {

@@ -1,7 +1,7 @@
 using Xunit;
-using Wallet;
+using BIP39Wallet;
 
-namespace Wallet.Tests
+namespace BIP39Wallet.Tests
 {
     public class WalletTests
     {
@@ -9,7 +9,7 @@ namespace Wallet.Tests
         public void CreateWallet_ReturnsValidAccountInfo()
         {
             // Arrange
-            var wallet = new Wallet();
+            var wallet = new BIP39Wallet.Wallet();
             var strength = 128; // 设置助记词强度（以比特位为单位）
             var language = Language.English; // 设置助记词语言
 

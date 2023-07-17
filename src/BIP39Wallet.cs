@@ -5,17 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
-using Wallet.Types;
-using Wallet.Extensions;
+using BIP39Wallet.Types;
+using BIP39Wallet.Extensions;
 using System.Text.RegularExpressions;
 using BIP39.HDWallet;
 using BIP39.HDWallet.Core;
 using AElf.Cryptography;
 using AElf;
+using System.Reflection;
 
-
-
-namespace Wallet
+namespace BIP39Wallet
 {
     public class Wallet
     {
@@ -72,7 +71,7 @@ namespace Wallet
 
     private string GetPath(string fileName)
     {
-        return $"../../../../src/Wordlists/{fileName}";
+        return $"../src/Wordlists/{fileName}";
     }
 
     public Mnemonic ConvertEntropyToMnemonic(Entropy entropy)
@@ -146,7 +145,11 @@ namespace Wallet
     public string ConvertMnemonicToSeedHex(Mnemonic mnemonic, string password)
     {
         var mnemonicBytes = Encoding.UTF8.GetBytes(mnemonic.Value.Normalize(NormalizationForm.FormKD));
-        var saltSuffix = password.IsNullOrEmpty() ? string.Empty : password;
+        var saltSuffix = string.Empty;
+        if (password != null && password != string.Empty)
+        {
+            saltSuffix = password;
+        }
         var salt = $"mnemonic{saltSuffix}";
         var saltBytes = Encoding.UTF8.GetBytes(salt);
 
@@ -178,7 +181,7 @@ namespace Wallet
     {   
         var mnemonic = GenerateMnemonic(strength, language);
         var seedHex = ConvertMnemonicToSeedHex(mnemonic, password);
-        var masterWallet = new HDWallet<BIP39Wallet>(seedHex, "m/44'/1616'");
+        var masterWallet = new HDWallet<xBIP39Wallet>(seedHex, "m/44'/1616'");
         var account = masterWallet.GetAccount(0);
         var wallet = account.GetExternalWallet(0);
         var keyPair = CryptoHelper.FromPrivateKey(wallet.PrivateKey);
@@ -197,7 +200,7 @@ namespace Wallet
                 Language = Language.English
             };
         var seedHex = ConvertMnemonicToSeedHex(mnemonicValue, password);
-        var masterWallet = new HDWallet<BIP39Wallet>(seedHex, "m/44'/1616'");
+        var masterWallet = new HDWallet<xBIP39Wallet>(seedHex, "m/44'/1616'");
         var account = masterWallet.GetAccount(0);
         var wallet = account.GetExternalWallet(0);
         var keyPair = CryptoHelper.FromPrivateKey(wallet.PrivateKey);

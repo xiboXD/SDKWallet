@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace Wallet.Extensions
+namespace BIP39Wallet.Extensions
 {
     public static class ByteArrayExtensions
     {
