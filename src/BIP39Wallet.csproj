@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <RestoreSources>http://192.168.66.111:8081/repository/nuget-group/index.json</RestoreSources>
     <OutputType>Library</OutputType>
     <LangVersion>latest</LangVersion>
