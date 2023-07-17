@@ -48,35 +48,9 @@ namespace BIP39Wallet
         var entropy = new Entropy(BitConverter.ToString(buffer).Replace("-", ""), language);
         return ConvertEntropyToMnemonic(entropy);
     }
-    public string[] LoadWordlist(Language language)
-    {
-        var file = language switch
-        {
-            Language.English => "english",
-            Language.Japanese => "japanese",
-            Language.Korean => "korean",
-            Language.Spanish => "spanish",
-            Language.ChineseSimplified => "chinese_simplified",
-            Language.ChineseTraditional => "chinese_traditional",
-            Language.French => "french",
-            Language.Italian => "italian",
-            Language.Czech => "czech",
-            Language.Portuguese => "portuguese",
-            _ => throw new ArgumentOutOfRangeException(nameof(language), language, null)
-        };
-
-        file = $"{file}.txt";
-        return File.ReadAllLines(GetPath(file));
-    }
-
-    private string GetPath(string fileName)
-    {
-        return $"../src/Wordlists/{fileName}";
-    }
-
     public Mnemonic ConvertEntropyToMnemonic(Entropy entropy)
     {
-        var wordlist = LoadWordlist(entropy.Language);
+        var wordlist = EnglishWords.Words;
 
         var entropyBytes = Enumerable.Range(0, entropy.Hex.Length / 2)
             .Select(x => Convert.ToByte(entropy.Hex.Substring(x * 2, 2), 16))
