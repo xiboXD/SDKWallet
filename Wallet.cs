@@ -20,18 +20,34 @@ namespace Wallet
     public class Wallet
     {
     private readonly WalletWordlistProvider _wordlistProvider;
+
+    public class BlockchainWallet
+    {
+        public string Address { get; private set; }
+        public string PrivateKey { get; private set; }
+        public string Mnemonic { get; private set; }
+        public string PublicKey { get; private set; }
+
+    public BlockchainWallet(string address, string privateKey, string mnemonic, string publicKey)
+    {
+        Address = address;
+        PrivateKey = privateKey;
+        Mnemonic = mnemonic;
+        PublicKey = publicKey;
+    }
+    }
     public Mnemonic GenerateMnemonic(int strength, Language language)
     {
-            if (strength % 32 != 0)
-            {
-                throw new NotSupportedException(WalletConstants.InvalidEntropy);
-            }
+        if (strength % 32 != 0)
+        {
+            throw new NotSupportedException(WalletConstants.InvalidEntropy);
+        }
 
-            var rngCryptoServiceProvider = new RNGCryptoServiceProvider();
-            var buffer = new byte[strength / 8];
-            rngCryptoServiceProvider.GetBytes(buffer);
-            var entropy = new Entropy(BitConverter.ToString(buffer).Replace("-", ""), language);
-            return ConvertEntropyToMnemonic(entropy);
+        var rngCryptoServiceProvider = new RNGCryptoServiceProvider();
+        var buffer = new byte[strength / 8];
+        rngCryptoServiceProvider.GetBytes(buffer);
+        var entropy = new Entropy(BitConverter.ToString(buffer).Replace("-", ""), language);
+        return ConvertEntropyToMnemonic(entropy);
     }
     public string[] LoadWordlist(Language language)
     {
@@ -158,7 +174,7 @@ namespace Wallet
         return true;
     }
 
-    public Dictionary<string, string> CreateWallet(int strength, Language language, string password)
+    public BlockchainWallet CreateWallet(int strength, Language language, string password)
     {   
         var mnemonic = GenerateMnemonic(strength, language);
         var seedHex = ConvertMnemonicToSeedHex(mnemonic, password);
@@ -174,10 +190,11 @@ namespace Wallet
         accountInfo.Add("PrivateKey", privateKey);
         accountInfo.Add("PublicKey", publicKey);
         accountInfo.Add("Address", address);
-        return accountInfo;
-    }
+        return new BlockchainWallet(address, privateKey, mnemonic.ToString(), publicKey);
+        }
+    
 
-    public Dictionary<string, string> GetWalletByMnemonic(string mnemonic, string password = null)
+    public BlockchainWallet GetWalletByMnemonic(string mnemonic, string password = null)
     {
         var accountInfo = new Dictionary<string, string>();
         var mnemonicValue = new Mnemonic
@@ -198,7 +215,7 @@ namespace Wallet
         accountInfo.Add("PublicKey", publicKey);
         accountInfo.Add("Address", address);
         
-        return accountInfo;
+        return new BlockchainWallet(address, privateKey, mnemonic, publicKey);
     }
 
        // Convert hex string to byte array
@@ -214,7 +231,7 @@ namespace Wallet
 
         return byteArray;
     }
-    public Dictionary<string, string> GetWalletByPrivateKey(string privateKey)
+    public BlockchainWallet GetWalletByPrivateKey(string privateKey)
     {
         var accountInfo = new Dictionary<string, string>();
         var keybyte = StringToByteArray(privateKey);
@@ -223,7 +240,7 @@ namespace Wallet
         var publicKey = keyPair.PublicKey.ToHex();
         accountInfo.Add("PrivateKey", privateKey);
         accountInfo.Add("PublicKey", publicKey);
-        return accountInfo;
+        return new BlockchainWallet(null, privateKey, null, publicKey);
     }
 
 }}

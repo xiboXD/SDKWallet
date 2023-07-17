@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZgQNZ/EI4ROjafC3M2SWBeZg/2L7bno6Cd9ZVradBsEnYkyX6pruOjdz5fdrHHMd1O+GukVVapmqGKnlk3e6Xw==",
+  "dgSpecHash": "00iqcFzFLP6EGMHBgLA3Cf9/FDDJju4S9idwjzaONl6T+ORao5/RLWZwF+5pXnchqI7FO+NOndfec24nK1UOkw==",
   "success": true,
   "projectFilePath": "/Users/xibo/practice/aelf-wallet/wallet.csproj",
   "expectedPackageFiles": [
@@ -18,8 +18,8 @@
     "/Users/xibo/.nuget/packages/microsoft.extensions.configuration.fileextensions/3.1.6/microsoft.extensions.configuration.fileextensions.3.1.6.nupkg.sha512",
     "/Users/xibo/.nuget/packages/microsoft.extensions.configuration.json/3.1.6/microsoft.extensions.configuration.json.3.1.6.nupkg.sha512",
     "/Users/xibo/.nuget/packages/microsoft.extensions.configuration.usersecrets/3.1.6/microsoft.extensions.configuration.usersecrets.3.1.6.nupkg.sha512",
-    "/Users/xibo/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0-preview.5.23280.8/microsoft.extensions.dependencyinjection.8.0.0-preview.5.23280.8.nupkg.sha512",
-    "/Users/xibo/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0-preview.5.23280.8/microsoft.extensions.dependencyinjection.abstractions.8.0.0-preview.5.23280.8.nupkg.sha512",
+    "/Users/xibo/.nuget/packages/microsoft.extensions.dependencyinjection/3.1.7/microsoft.extensions.dependencyinjection.3.1.7.nupkg.sha512",
+    "/Users/xibo/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/3.1.7/microsoft.extensions.dependencyinjection.abstractions.3.1.7.nupkg.sha512",
     "/Users/xibo/.nuget/packages/microsoft.extensions.fileproviders.abstractions/3.1.6/microsoft.extensions.fileproviders.abstractions.3.1.6.nupkg.sha512",
     "/Users/xibo/.nuget/packages/microsoft.extensions.fileproviders.physical/3.1.6/microsoft.extensions.fileproviders.physical.3.1.6.nupkg.sha512",
     "/Users/xibo/.nuget/packages/microsoft.extensions.filesystemglobbing/3.1.6/microsoft.extensions.filesystemglobbing.3.1.6.nupkg.sha512",
