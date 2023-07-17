@@ -1,4 +1,4 @@
-namespace SDK.HDWallet.Core
+namespace BIP39.HDWallet.Core
 {
     public interface IAccount<out TWallet> where TWallet : IWallet, new()
     {

@@ -1,6 +1,6 @@
 using NBitcoin;
 
-namespace SDK.HDWallet.Core
+namespace BIP39.HDWallet.Core
 {
     public class Account<TWallet> : IAccount<TWallet> where TWallet : IWallet, new()
     {

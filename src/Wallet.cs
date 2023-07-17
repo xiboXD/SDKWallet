@@ -8,8 +8,8 @@ using System.IO;
 using Wallet.Types;
 using Wallet.Extensions;
 using System.Text.RegularExpressions;
-using SDK.HDWallet;
-using SDK.HDWallet.Core;
+using BIP39.HDWallet;
+using BIP39.HDWallet.Core;
 using AElf.Cryptography;
 using AElf;
 
@@ -178,42 +178,32 @@ namespace Wallet
     {   
         var mnemonic = GenerateMnemonic(strength, language);
         var seedHex = ConvertMnemonicToSeedHex(mnemonic, password);
-        var masterWallet = new HDWallet<SDKWallet>(seedHex, "m/44'/1616'");
+        var masterWallet = new HDWallet<BIP39Wallet>(seedHex, "m/44'/1616'");
         var account = masterWallet.GetAccount(0);
         var wallet = account.GetExternalWallet(0);
         var keyPair = CryptoHelper.FromPrivateKey(wallet.PrivateKey);
         var privateKey = keyPair.PrivateKey.ToHex();
         var publicKey = keyPair.PublicKey.ToHex();
         var address = wallet.Address.ToBase58();
-        var accountInfo = new Dictionary<string, string>();
-        accountInfo.Add("Mnemonic", mnemonic.ToString());
-        accountInfo.Add("PrivateKey", privateKey);
-        accountInfo.Add("PublicKey", publicKey);
-        accountInfo.Add("Address", address);
         return new BlockchainWallet(address, privateKey, mnemonic.ToString(), publicKey);
         }
     
 
     public BlockchainWallet GetWalletByMnemonic(string mnemonic, string password = null)
     {
-        var accountInfo = new Dictionary<string, string>();
         var mnemonicValue = new Mnemonic
             {
                 Value = mnemonic,
                 Language = Language.English
             };
         var seedHex = ConvertMnemonicToSeedHex(mnemonicValue, password);
-        var masterWallet = new HDWallet<SDKWallet>(seedHex, "m/44'/1616'");
+        var masterWallet = new HDWallet<BIP39Wallet>(seedHex, "m/44'/1616'");
         var account = masterWallet.GetAccount(0);
         var wallet = account.GetExternalWallet(0);
         var keyPair = CryptoHelper.FromPrivateKey(wallet.PrivateKey);
         var privateKey = keyPair.PrivateKey.ToHex();
         var publicKey = keyPair.PublicKey.ToHex();
         var address = wallet.Address.ToBase58();
-        accountInfo.Add("Mnemonic", mnemonic);
-        accountInfo.Add("PrivateKey", privateKey);
-        accountInfo.Add("PublicKey", publicKey);
-        accountInfo.Add("Address", address);
         
         return new BlockchainWallet(address, privateKey, mnemonic, publicKey);
     }
@@ -233,13 +223,10 @@ namespace Wallet
     }
     public BlockchainWallet GetWalletByPrivateKey(string privateKey)
     {
-        var accountInfo = new Dictionary<string, string>();
         var keybyte = StringToByteArray(privateKey);
         Array.Resize(ref keybyte, 32);
         var keyPair = CryptoHelper.FromPrivateKey(keybyte);
         var publicKey = keyPair.PublicKey.ToHex();
-        accountInfo.Add("PrivateKey", privateKey);
-        accountInfo.Add("PublicKey", publicKey);
         return new BlockchainWallet(null, privateKey, null, publicKey);
     }
 

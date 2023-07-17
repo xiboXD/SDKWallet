@@ -1,6 +1,6 @@
-namespace SDK.HDWallet
+namespace BIP39.HDWallet
 {
-    public class SDKHDWalletConstants
+    public class BIP39HDWalletConstants
     {
         public const uint HardenedOffset = 0x80000000;
         /// <summary>
@@ -9,6 +9,6 @@ namespace SDK.HDWallet
         /// coin_type: AELF is 1616 (https://github.com/satoshilabs/slips/blob/master/slip-0044.md)
         /// 
         /// </summary>
-        public const string SDKPath = "'m/44\'/1616\'/0\'/0/0'";
+        public const string BIP39Path = "'m/44\'/1616\'/0\'/0/0'";
     }
 }

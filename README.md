@@ -1,1 +1,1 @@
-# SDKWallet
+# BIP39Wallet

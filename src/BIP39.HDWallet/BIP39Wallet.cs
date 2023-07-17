@@ -1,9 +1,9 @@
-using SDK.HDWallet.Core;
+using BIP39.HDWallet.Core;
 using AElf.Types;
 
-namespace SDK.HDWallet
+namespace BIP39.HDWallet
 {
-    public class SDKWallet : Wallets
+    public class BIP39Wallet : Wallets
     {
         protected override Address GenerateAddress()
         {
