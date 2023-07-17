@@ -11,7 +11,7 @@
     <PackageReference Include="NBitcoin" Version="6.0.18" />
     <PackageReference Include="AElf.Core" Version="1.0.0" />
   </ItemGroup>
-  <ItemGroup>
+  <!-- <ItemGroup>
     <None Include="Wordlists\chinese_simplified.txt" />
     <None Include="Wordlists\chinese_traditional.txt" />
     <None Include="Wordlists\czech.txt" />
@@ -22,5 +22,5 @@
     <None Include="Wordlists\korean.txt" />
     <None Include="Wordlists\portuguese.txt" />
     <None Include="Wordlists\spanish.txt" />
-  </ItemGroup>
+  </ItemGroup> -->
 </Project>

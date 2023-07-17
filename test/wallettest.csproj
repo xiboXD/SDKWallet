@@ -3,22 +3,22 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\wallet.csproj" />
+    <ProjectReference Include="..\src\wallet.csproj" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.console" Version="2.4.1"/>
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Wordlists\chinese_simplified.txt" />
-    <None Include="..\Wordlists\chinese_traditional.txt" />
-    <None Include="..\Wordlists\czech.txt" />
-    <None Include="..\Wordlists\english.txt" />
-    <None Include="..\Wordlists\french.txt" />
-    <None Include="..\Wordlists\italian.txt" />
-    <None Include="..\Wordlists\japanese.txt" />
-    <None Include="..\Wordlists\korean.txt" />
-    <None Include="..\Wordlists\portuguese.txt" />
-    <None Include="..\Wordlists\spanish.txt" />
+    <None Include="..\src\Wordlists\chinese_simplified.txt" />
+    <None Include="..\src\Wordlists\chinese_traditional.txt" />
+    <None Include="..\src\Wordlists\czech.txt" />
+    <None Include="..\src\Wordlists\english.txt" />
+    <None Include="..\src\Wordlists\french.txt" />
+    <None Include="..\src\Wordlists\italian.txt" />
+    <None Include="..\src\Wordlists\japanese.txt" />
+    <None Include="..\src\Wordlists\korean.txt" />
+    <None Include="..\src\Wordlists\portuguese.txt" />
+    <None Include="..\src\Wordlists\spanish.txt" />
   </ItemGroup>
 </Project>
