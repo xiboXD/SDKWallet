@@ -1,5 +1,6 @@
 using Xunit;
 using BIP39Wallet;
+using System;
 
 namespace BIP39Wallet.Tests
 {

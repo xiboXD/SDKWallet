@@ -1,10 +1,8 @@
 #pragma warning disable CS0618 // Type or member is obsolete
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
-using System.IO;
 using BIP39Wallet.Types;
 using BIP39Wallet.Extensions;
 using System.Text.RegularExpressions;
@@ -12,7 +10,6 @@ using BIP39.HDWallet;
 using BIP39.HDWallet.Core;
 using AElf.Cryptography;
 using AElf;
-using System.Reflection;
 
 namespace BIP39Wallet
 {
